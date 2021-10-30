@@ -152,57 +152,59 @@
 </head>
 <body>
     <div class="card">
-      <h2>Education</h2>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label>School</label>
-            <input type="text">
-          </div>
-        </div>
+      <form action="/post_education/" method="post">
+          <h2>Education</h2>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label>School</label>
+                <input type="text" name="school">
+              </div>
+            </div>
 
-        <div class="col">
-          <div class="form-group">
-            <label>Qualification</label>
-            <select id="qualification" name="qualification">
-                <option value="MEng">MEng</option>
-                <option value="bsc">BSc</option>
-                <option value="msc">MSc</option>
-            </select>
-          </div>
-        </div>
+            <div class="col">
+              <div class="form-group">
+                <label>Qualification</label>
+                <select id="qualification" name="qualification">
+                    <option value="MEng">MEng</option>
+                    <option value="bsc">BSc</option>
+                    <option value="msc">MSc</option>
+                </select>
+              </div>
+            </div>
 
-        <div class="col">
-          <div class="form-group">
-            <label for="dateofbirth">Start Date</label>
-            <input type="date" name="startdate" id="startdate">
-          </div>
-        </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="dateofbirth">Start Date</label>
+                <input type="date" name="startdate" id="startdate">
+              </div>
+            </div>
 
-        <div class="col">
-          <div class="form-group">
-            <label>Field</label>
-              <label for="field"></label><select id="field" name="field">
-                <option value="MEng">MEng</option>
-                <option value="bsc">BSc</option>
-                <option value="msc">MSc</option>
-            </select>
-          </div>
-        </div>
+            <div class="col">
+              <div class="form-group">
+                <label>Field</label>
+                  <label for="field"></label><select id="field" name="field">
+                    <option value="MEng">MEng</option>
+                    <option value="bsc">BSc</option>
+                    <option value="msc">MSc</option>
+                </select>
+              </div>
+            </div>
 
-        <div class="col">
-          <div class="form-group">
-            <label for="dateofbirth">End Date</label>
-            <input type="date" name="startdate" id="startdate">
+            <div class="col">
+              <div class="form-group">
+                <label for="dateofbirth">End Date</label>
+                <input type="date" name="startdate" id="startdate">
+              </div>
+            </div>
+            <div class="col">
+              <button type="button" >Remove</button>
+            </div>
+            <div class="col">
+              <button type="button" >Add Another</button>
+            </div>
           </div>
-        </div>
-        <div class="col">
-          <button type="button" >Remove</button>
-        </div>
-        <div class="col">
-          <button type="button" >Add Another</button>
-        </div>
-      </div>
+     </form>
     </div>
 
 

@@ -66,5 +66,6 @@ def postsignup(request):
 
     return render(request, "signIn.html")
 
-
-
+# def push_education(request):
+#     school = request.POST.get('school')
+#     print(school)
