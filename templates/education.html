@@ -152,7 +152,8 @@
 </head>
 <body>
     <div class="card">
-      <form action="/post_education/" method="post">
+      <form action="/posteducation/" method="post">
+          {% csrf_token %}
           <h2>Education</h2>
           <div class="row">
             <div class="col">
@@ -201,7 +202,7 @@
               <button type="button" >Remove</button>
             </div>
             <div class="col">
-              <button type="button" >Add Another</button>
+              <button type="button"onclick="location.href='{% url 'postpusheducation' %}'" >Add Another</button>
             </div>
           </div>
      </form>

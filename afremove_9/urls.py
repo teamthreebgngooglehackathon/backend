@@ -23,5 +23,7 @@ urlpatterns = [
     path('postsign/',views.postsign),
     path('logout/', views.logout, name="log"),
     path('signup/',views.signup, name="signup"),
-    path('postsignup/',views.postsignup, name="postsignup")
+    path('postsignup/',views.postsignup, name="postsignup"),
+    path('push_education/',views.push_education, name="pusheducation"),
+    path('post_push_education/', views.post_push_education, name="postpusheducation")
 ]
