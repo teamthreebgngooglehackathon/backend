@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% csrf_token %}
+    <h1>Welcome</h1>
+    {{ e }}
+    <div>
+        <button type="button" onclick="location.href='{% url 'log' %}'">Logout</button>
+    </div>
+
+    <h2>
+        What details would you like to enter?
+    </h2>
+
+    <br><br>
+
+    <button type="button" onclick="location.href='{% url 'log' %}'">Logout</button>
+
+
+
+</body>
+</html>
