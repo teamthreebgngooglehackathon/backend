@@ -3,7 +3,33 @@
 Created on Tue Apr 28 by chrislovejoy
 Adapted by Regen Petu-Stiles
 """
+'''
+This code extracts all the desired characteristics of all new job postings
+    of the title and location specified and returns them in single file.
+I have focused on two websites
+    The arguments it takes are:
+        - Website: to specify which website to search (options: 'careersinafrica' or 'CWjobs')
+        - Job_title
+        - Location
+        - Desired_characs: this is a list of the job characteristics of interest,
+            from titles, companies, links and date_listed.
+        - Filename: to specify the filename and format of the output.
+            Default is .csv file called 'results.csv'
+'''
+"""
+Example code
+import job_scraper
+from job_scraper import find_jobs_from
 
+desired_characs = ['titles', 'companies', 'links', 'date_listed']
+
+
+find_jobs_from('careersinafrica', 'data scientist', 'london', desired_characs) #Extracting jobs from careersinafrica.com
+
+
+
+find_jobs_from('CWjobs', 'data scientist', 'london', desired_characs)#Extracting jobs from CWjobs.co.uk (using Selenium)
+"""
 
 import urllib
 import requests
@@ -236,4 +262,20 @@ def extract_date_cwjobs(job_elem):
     link_elem = job_elem.find('li', class_='date-posted')
     link = link_elem.text.strip()
     return link
+
+
+"""
+Example code
+import job_scraper
+from job_scraper import find_jobs_from
+
+desired_characs = ['titles', 'companies', 'links', 'date_listed']
+
+
+find_jobs_from('careersinafrica', 'data scientist', 'london', desired_characs) #Extracting jobs from careersinafrica.com
+
+
+
+find_jobs_from('CWjobs', 'data scientist', 'london', desired_characs)#Extracting jobs from CWjobs.co.uk (using Selenium)
+"""
 
