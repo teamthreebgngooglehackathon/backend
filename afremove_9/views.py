@@ -70,9 +70,20 @@ def push_education(request):
     return render(request, "education.html")
 
 def post_push_education(request):
-    print(request.POST)
     school = request.POST.get('school')
-    print()
-    print(school)
-    print()
+    qualification = request.POST.get('qualification')
+    field = request.POST.get('field')
+    data = {
+        'School': school,
+        'Qualification': qualification,
+        'Field': field
+    }
+    idtoken = request.session['uid']
+    user_ = autho.get_account_info(idtoken)
+    print(user_)
+    hello_user = user_['users'][0]['localId']
+
+    db.child('Candidates').child(hello_user).child("Education").set(data)
+
+    # print(request.user)
     return render(request, "welcome.html")
