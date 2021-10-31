@@ -66,8 +66,10 @@ def postsignup(request):
 
     return render(request, "signIn.html")
 
+
 def push_education(request):
     return render(request, "education.html")
+
 
 def post_push_education(request):
     school = request.POST.get('school')
@@ -87,3 +89,47 @@ def post_push_education(request):
 
     # print(request.user)
     return render(request, "welcome.html")
+
+
+def company_submit(request):
+    return render(request, "company_submit.html")
+
+
+def post_company_submit(request):
+    values, keys = [], []
+    company_name = request.POST.get("companyname")
+    values.append(company_name)
+    keys.append("companyname")
+    industry = request.POST.get("industry")
+    values.append(industry)
+    keys.append("industry")
+    deadline = request.POST.get("deadline")
+    values.append(deadline)
+    keys.append("deadline")
+    position = request.POST.get("position")
+    values.append(position)
+    keys.append("position")
+
+    phone = int(request.POST.get("phone"))
+    values.append(phone)
+    keys.append("phone")
+    remote = request.POST.get("remote")
+    values.append(remote)
+    keys.append("remote")
+    jobdescription = request.POST.get("jobdescription")
+    values.append(jobdescription)
+    keys.append("remote")
+    jobrequirments = request.POST.get("jobrequirments")
+    values.append(jobrequirments)
+    keys.append("remote")
+
+    data = {}
+
+    for i in range(len(keys)):
+        data[keys[i]] = values[i]
+
+    db.child('Company').child(company_name).set(data)
+
+    # data = {"company_name":company_name, "industry"}
+
+    return render(request, "signIn.html")

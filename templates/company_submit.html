@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Samar Job Application Form</title>
+
+</head>
+
+<body>
+<form action="/post_company_submit/" id="EmploymentApplication100" method="post">
+    {% csrf_token %}
+    <table border="0" cellpadding="5" cellspacing="0">
+        <tr> <td colspan="2">
+        <label for="CompanyName"><b>Company Name *</b></label><br />
+        <input name="companyname" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+        </td>  </tr> <tr> <td colspan="2">
+        <label for="Industry"><b>Industry *</b></label><br />
+        <input name="industry" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+        </td> </tr> <tr> <td colspan="2">
+        <label for="Deadline"><b>Deadline</b></label><br />
+        <input name="deadline" type="text" maxlength="255" style="width:100%;max-width: 535px" />
+        </td> </tr> <tr> <td colspan="2">
+        <label for="Position "><b>Position *</b></label><br />
+        <input name="position" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+        </td> </tr>  <tr> <td>
+        <label for="Phone"><b>Phone (Only digits, no other symbols) *</b></label><br />
+        <input name="phone" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+        </td> </tr> <tr> <td colspan="2">
+        <label for="remote"><b>Willing to accept remote office?</b></label><br />
+            <label for="field"></label><select id="relocate" name="remote">
+                        <option value="yes">Yes </option>
+                        <option value="no">No</option>
+                        <option value="notsure">Not Sure</option>
+                    </select>
+        </td> </tr>  <tr> <td colspan="2">
+        <label for="jobdescription"><b>Job Description</b></label><br />
+        <textarea name="jobdescription" rows="7" cols="40" style="width:100%;max-width: 535px"></textarea>
+        </td> </tr> <tr> <td colspan="2">
+        <label for="jobrequirments"><b>Job Requirements</b></label><br />
+        <textarea name="jobrequirments" rows="7" cols="40" style="width:100%;max-width: 535px"></textarea>
+        </td> </tr> <tr> <td colspan="2" style="text-align: center;">
+
+        <input type="submit" value="Send Job Post" />
+        </td> </tr>
+    </table>
+</form>
+</body>
+</html>
