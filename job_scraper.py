@@ -20,15 +20,9 @@ I have focused on two websites
 Example code
 import job_scraper
 from job_scraper import find_jobs_from
-
 desired_characs = ['titles', 'companies', 'links', 'date_listed']
-
-
 find_jobs_from('careersinafrica', 'data scientist', 'london', desired_characs) #Extracting jobs from careersinafrica.com
-
-
-
-find_jobs_from('CWjobs', 'data scientist', 'london', desired_characs)#Extracting jobs from CWjobs.co.uk (using Selenium)
+find_jobs_from('CWjobs', 'data scientist', 'london', desired_characs)#Extracting jobs from weworkremotely.com (using Selenium)
 """
 
 import urllib
@@ -39,14 +33,14 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 import pandas as pd
 import os
-
+import re
 
 def find_jobs_from(website, job_title, location, desired_characs, filename="results.csv"):    
     """
     This function extracts all the desired characteristics of all new job postings
     of the title and location specified and returns them in single file.
     The arguments it takes are:
-        - Website: to specify which website to search (options: 'careersinafrica' or 'CWjobs')
+        - Website: to specify which website to search (options: 'careersinafrica' or 'weworkremotely.com')
         - Job_title
         - Location
         - Desired_characs: this is a list of the job characteristics of interest,
@@ -59,7 +53,7 @@ def find_jobs_from(website, job_title, location, desired_characs, filename="resu
         job_soup = load_indeed_jobs_div(job_title, location)
         jobs_list, num_listings = extract_job_information_indeed(job_soup, desired_characs)
     
-    if website == 'CWjobs':
+    if website == 'weworkremotely':
         location_of_driver = os.getcwd()
         driver = initiate_driver(location_of_driver, browser='chrome')
         job_soup = make_job_search(job_title, location, driver)
@@ -78,20 +72,25 @@ def save_jobs_to_excel(jobs_list, filename):
     jobs.to_excel(filename)
 
 
-
 ## ================== FUNCTIONS FOR careersinafrica =================== ##
 
 def load_indeed_jobs_div(job_title, location):
+
     getVars = {'q' : job_title, 'l' : location, 'fromage' : 'last', 'sort' : 'date'}
     url = ('https://www.careersinafrica.com/job-search/' + urllib.parse.urlencode(getVars))
+    url.format(getVars)
     page = requests.get(url)
-    soup = BeautifulSoup(page.content, "html.parser")
+    soup = BeautifulSoup(page.content, "html5lib")
     job_soup = soup.find(id="resultsCol")
+    
     return job_soup
 
 def extract_job_information_indeed(job_soup, desired_characs):
+
+    job_soup = soup.find(id="resultsCol")
     job_elems = job_soup.find_all('div', class_='jobsearch-SerpJobCard')
      
+    
     cols = []
     extracted_info = []
     
@@ -156,7 +155,7 @@ def extract_date_indeed(job_elem):
 
 
 
-## ================== FUNCTIONS FOR CWJOBS.CO.UK =================== ##
+## ================== FUNCTIONS FOR weworkremotely.com=================== ##
     
 
 def initiate_driver(location_of_driver, browser):
@@ -171,7 +170,7 @@ def initiate_driver(location_of_driver, browser):
     return driver
 
 def make_job_search(job_title, location, driver):
-    driver.get('https://www.cwjobs.co.uk/')
+    driver.get('https://weworkremotely.com/remote-jobs')
     
     # Select the job box
     job_title_box = driver.find_element_by_name('Keywords')
@@ -268,6 +267,11 @@ def extract_date_cwjobs(job_elem):
 Example code
 import job_scraper
 from job_scraper import find_jobs_from
+desired_characs = ['titles', 'companies', 'links', 'date_listed']
+find_jobs_from('careersinafrica', 'data scientist', 'london', desired_characs) #Extracting jobs from careersinafrica.com
+find_jobs_from('weworkremotely', 'data scientist', 'london', desired_characs)#Extracting jobs from CWjobs.co.uk (using Selenium)
+"""
+#from job_scraper import find_jobs_from
 
 desired_characs = ['titles', 'companies', 'links', 'date_listed']
 
@@ -276,6 +280,4 @@ find_jobs_from('careersinafrica', 'data scientist', 'london', desired_characs) #
 
 
 
-find_jobs_from('CWjobs', 'data scientist', 'london', desired_characs)#Extracting jobs from CWjobs.co.uk (using Selenium)
-"""
-
+find_jobs_from('weworkremotely', 'data scientist', 'london', desired_characs)#Extracting jobs from CWjobs.co.uk (using Selenium)
