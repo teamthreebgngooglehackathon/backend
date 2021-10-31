@@ -1,42 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <html>
-{% csrf_token %}
-
-
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta charset="utf-8"/>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% csrf_token %}
     <title>Create Profile</title>
     <link rel="stylesheet" href="testing.css"/>
     <style>
         h1 {
             text-align: center;
         }
-        a{
-            text-align: center;
+
+        * {
+            box-sizing: border-box;
         }
 
-
-        div {
-            border: 4px solid darkblue;
-            padding: 50px;
+        body {
+            margin: 0;
+        }
+        .myDiv {
+  border: 5px solid darkblue;
+padding: 50px;
             margin: 20px;
             position: relative;
 
+}
+        .cvInput {
+            text-align: center;
+  border: 5px solid black;
+padding: 50px;
+            margin: 20px;
+            position: relative;
+
+}
+
+        /* Style the header */
+        .header {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
         }
 
-        /* Set additional styling options for the columns*/
+        /* Style the top navigation bar */
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        /* Style the topnav links */
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /* Change color on hover */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Create three equal columns that floats next to each other */
         .column {
             float: left;
             width: 50%;
+            padding: 15px;
         }
 
+        /* Clear floats after the columns */
         .row:after {
             content: "";
             display: table;
             clear: both;
+        }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
         }
     </style>
     <script>
@@ -85,173 +133,226 @@
 
     </script>
 </head>
-
 <body>
-<nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand text-white">Afremote</a>
-  <form class="form-inline">
-      <button class="btn" type="button" style="float: right;">Your Dashboard </button>
-      <button class="btn" type="button"; style="float: right;">View All Jobs</button>
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" style="float: right;"  aria-label="Search">
-    <button class="btn" type="submit" style="float: right;" >Search</button>
-  </form>
-</nav>
 
 
 <h1>Create Profile</h1>
 
-<div style="text-align:center;">
-    <label for="myfile">Select a file:</label>
-    <input type="file" id="myfile" name="myfile" align=center>
+<div class="cvInput">
+    <label for="file">Select a file:</label>
+    <input type="file" id="file" name="file" >
 </div>
 <h1>Confirm your details</h1>
-<div>
+
+
+<div class="myDiv">
     <h2>Personal</h2>
-    <form action="/post_company_submit/" id="EmploymentApplication100" method="post">
-        <table border="0" cellpadding="5" cellspacing="0">
-            <tr>
-                <td colspan="2">
-                    <label for="firstName"><b>First Name:</b></label><br/>
-                    <input name="firstName" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="lastName"><b>Last Name:</b></label><br/>
-                    <input name="lastName" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="email"><b>Email Address:</b></label><br/>
-                    <input name="email" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="number"><b>Phone Number:</b></label><br/>
-                    <input name="number" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="country"><b>Country:</b></label><br/>
-                    <input name="country" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="city"><b>City:</b></label><br/>
-                    <input name="city" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-        </table>
-    </form>
-</div>
 
-<div class="card">
-    <form action="/post_push_education/" method="post">
-        <h2>Education</h2>
+    <div class="row">
+        <div class="column">
+            <table border="0" cellpadding="5" cellspacing="0">
+                <tr>
+                    <td colspan="2">
+                        <label for="firstName"><b>First Name:</b></label><br/>
+                        <input name="firstName" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="number"><b>Phone Number:</b></label><br/>
+                        <input name="number" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="email"><b>Email Address:</b></label><br/>
+                        <input name="email" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-        <label>School</label>
-        <input type="text" name="school">
+        <div class="column">
+            <table border="0" cellpadding="5" cellspacing="0">
 
-        <label>Qualification</label>
-        <select id="qualification" name="qualification">
-            <option value="MEng">MEng</option>
-            <option value="bsc">BSc</option>
-            <option value="msc">MSc</option>
-        </select>
+                <tr>
+                    <td colspan="2">
+                        <label for="lastName"><b>Last Name:</b></label><br/>
+                        <input name="lastName" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="country"><b>Country:</b></label><br/>
+                        <input name="country" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="city"><b>City:</b></label><br/>
+                        <input name="city" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+            </table>
+        </div>
 
-
-        <label for="dateofbirth">Start Date</label>
-        <input type="date" name="startdate" id="startdate">
-
-
-        <label>Field</label>
-        <label for="field"></label><select id="field" name="field">
-        <option value="cs">Computer Science</option>
-        <option value="meche">Mechanical Engineering</option>
-        <option value="fian">Finance</option>
-        <option value="math">Mathematics</option>
-    </select>
-
-        <label for="dateofbirth">End Date</label>
-        <input type="date" name="startdate" id="startdate">
-
-        <button type="button">Remove</button>
-
-        <input type="submit" value="AddOn">
+    </div>
 
 </div>
 
-<div>
-    <form action="/post_company_submit/" id="EmploymentApplication100" method="post">
-        <h2>Work Experience</h2>
-        <table border="0" cellpadding="5" cellspacing="0">
-            <tr>
-                <td colspan="2">
-                    <label for="CompanyName"><b>Company Name:</b></label><br/>
-                    <input name="companyname" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="jobType"><b>Job Type:</b></label><br/>
-                    <label for="field"></label><select id="experience" name="jobType">
-                    <option value="intern">Intern</option>
-                    <option value="graduate">Graduate</option>
-                    <option value="fullTime">Full-Time</option>
-                </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="details"><b>Details</b></label><br/>
-                    <textarea name="details" rows="7" cols="40" style="width:100%;max-width: 535px"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="role"><b>Role:</b></label><br/>
-                    <input name="role" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="startDate"><b>Start Date:</b></label><br/>
-                    <input name="startDate" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label for="endDate"><b>End Date:</b></label><br/>
-                    <input name="endDate" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-        </table>
-    </form>
+<div class="myDiv">
+
+    <h2>Education</h2>
+
+    <div class="row">
+        <div class="column">
+            <table border="0" cellpadding="5" cellspacing="0">
+                <tr>
+                    <td colspan="2">
+                        <label>School</label>
+                        <input type="text" name="school" maxlength="100" style="width:100%;max-width: 535px">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="dateofbirth">Start Date</label>
+                        <input type="date" name="startdate" id="startdate" maxlength="100"
+                               style="width:100%;max-width: 535px">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="dateofbirth">End Date</label>
+                        <input type="date" name="startdate" id="startdate" maxlength="100"
+                               style="width:100%;max-width: 535px">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+            </table>
+
+        </div>
+
+        <div class="column">
+            <table border="0" cellpadding="5" cellspacing="0">
+                <tr>
+                    <td colspan="2">
+                        <label>Qualification</label>
+                        <select id="qualification" name="qualification" maxlength="100"
+                                style="width:100%;max-width: 535px">
+                            <option value="MEng">MEng</option>
+                            <option value="bsc">BSc</option>
+                            <option value="msc">MSc</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Area of Study</label>
+                        <label for="field"></label><select id="field" name="field" maxlength="100"
+                                                           style="width:100%;max-width: 535px">
+                        <option value="cs">Computer Science</option>
+                        <option value="meche">Mechanical Engineering</option>
+                        <option value="fian">Finance</option>
+                        <option value="math">Mathematics</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="button">Remove</button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
 </div>
-<div>
-    <h2>Skills</h2>
-    <form action="/post_company_submit/" id="EmploymentApplication100" method="post">
-        <input type="text" name="text" id="inputText"/>
-        <button onclick="getSkills();">Add</button>
-        <p id="oText"></p>
-    </form>
-</div>
-<div>
-    <h2>Roles of Interest</h2>
-    <form action="/post_company_submit/" id="EmploymentApplication100" method="post">
-        <input type="text" name="text" id="outputText"/>
-        <button onclick="getInterests();">Add</button>
-        <p id="pText"></p>
-    </form>
-</div>
+    <div class="myDiv">
+        <form action="/post_company_submit/" id="EmploymentApplication100" method="post">
+            <h2>Work Experience</h2>
+            <div class="row">
+                <div class="column">
+                    <table border="0" cellpadding="5" cellspacing="0">
+                        <tr>
+                            <td colspan="2">
+                                <label for="CompanyName"><b>Company Name:</b></label><br/>
+                                <input name="companyname" type="text" maxlength="100"
+                                       style="width:100%;max-width: 535px"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="details"><b>Details</b></label><br/>
+                                <textarea name="details" rows="7" cols="40"
+                                          style="width:100%;max-width: 535px"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="startDate"><b>Start Date:</b></label><br/>
+                                <input name="startDate" type="text" maxlength="100"
+                                       style="width:100%;max-width: 535px"/>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="column">
+                    <table border="0" cellpadding="5" cellspacing="0">
+
+                        <tr>
+                            <td colspan="2">
+                                <label for="jobType"><b>Job Type:</b></label><br/>
+                                <label for="field"></label><select id="experience" name="jobType">
+                                <option value="intern">Intern</option>
+                                <option value="graduate">Graduate</option>
+                                <option value="fullTime">Full-Time</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="role"><b>Role:</b></label><br/>
+                                <input name="role" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="endDate"><b>End Date:</b></label><br/>
+                                <input name="endDate" type="text" maxlength="100" style="width:100%;max-width: 535px"/>
+                            </td>
+                        </tr>
+
+                        <td colspan="2">
+                    </table>
+                </div>
+
+            </div>
+
+
+    </div>
+    <div class="myDiv">
+        <h2>Skills</h2>
+        <form action="/post_company_submit/" id="EmploymentApplication100" method="post">
+            <input type="text" name="text" id="inputText"/>
+            <button onclick="getSkills();">Add</button>
+            <p id="oText"></p>
+        </form>
+    </div>
+
+    <div class="myDiv">
+        <h2>Roles of Interest</h2>
+        <form action="/post_company_submit/" id="EmploymentApplication100" method="post">
+            <input type="text" name="text" id="outputText"/>
+            <button onclick="getInterests();">Add</button>
+            <p id="pText"></p>
+        </form>
+    </div>
 
 </body>
 </html>
