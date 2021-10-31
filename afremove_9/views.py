@@ -118,10 +118,10 @@ def post_company_submit(request):
     keys.append("remote")
     jobdescription = request.POST.get("jobdescription")
     values.append(jobdescription)
-    keys.append("remote")
+    keys.append("jobdescription")
     jobrequirments = request.POST.get("jobrequirments")
     values.append(jobrequirments)
-    keys.append("remote")
+    keys.append("jobrequirments")
 
     data = {}
 
