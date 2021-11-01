@@ -27,5 +27,7 @@ urlpatterns = [
     path('push_education/',views.push_education, name="pusheducation"),
     path('post_push_education/', views.post_push_education, name="postpusheducation"),
     path('company_submit/',views.company_submit, name="company_submit"),
-    path('post_company_submit/',views.post_company_submit, name="post_company_submit")
+    path('post_company_submit/',views.post_company_submit, name="post_company_submit"),
+    path('createyourprofile/', views.createyourprofile, name="createyourprofile"),
+    path('postcreateyourprofile/', views.postcreateyourprofile, name="postcreateyourprofile")
 ]

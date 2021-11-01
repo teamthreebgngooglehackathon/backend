@@ -133,3 +133,50 @@ def post_company_submit(request):
     # data = {"company_name":company_name, "industry"}
 
     return render(request, "signIn.html")
+
+def createyourprofile(request):
+    return render(request, "createyourprofile_1.html")
+
+def postcreateyourprofile(request):
+    # education_value = ["Education"]
+    # education_key = ["Education"]
+    # work_experience_value = ["Work Experience"]
+    # work_experience_key = ["Work Experience"]
+
+    # school = request.POST.get("school")
+    # education_value.append(school)
+    # education_key.append("school")
+    #
+    # qualification = request.POST.get
+
+    idtoken = request.session['uid']
+    user_ = autho.get_account_info(idtoken)
+    hello_user = user_['users'][0]['localId']
+
+    cv_data = {"cv":request.POST.get("url")}
+    db.child('Candidates').child(hello_user).child("CV").set(cv_data)
+
+    education = ["Education","school", "qualification", "field", "educationstartdate","educationenddate"]
+    work_experience = ["Work Experience","company_name", "details", "role", "startdateworkexperience", "enddateworkexperience"]
+
+    edu_work = [education, work_experience]
+
+
+    for factor_list in edu_work:
+        data = {}
+        for i in range(1, len(factor_list)):
+            ele = factor_list[i]
+            ele_data = request.POST.get(ele)
+            data[ele] = ele_data
+        db.child('Candidates').child(hello_user).child(factor_list[0]).set(data)
+
+    skills = request.POST.get('skillstext')
+    roles = request.POST.get('rolestext')
+
+    data_skills = {'skills':skills}
+    data_roles = {'roles':roles}
+
+    db.child('Candidates').child(hello_user).child('Skills').set(data_skills)
+    db.child('Candidates').child(hello_user).child('Roles').set(data_roles)
+
+    return render(request,"welcome.html")
