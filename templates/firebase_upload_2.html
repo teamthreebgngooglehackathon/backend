@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Firebase File Upload</title>
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1, maximum-scale=1"
+/>
+</head>
+<body>
+    <form action="/postfirebase_upload/" method= "post">
+        {% csrf_token %}
+        <input type="hidden" name="url" id="url" />
+        <input type="file" id="fileButton"/>
+        <input type="submit" value="confirm">
+        <button type="button" onclick="location.href='{% url 'createyourprofile' %}'">Go back to profile</button>
+        <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {apiKey: "AIzaSyBxJTyBRe7bVkT_HaB6fHNxDc13mK-U8F8",
+          authDomain: "afremote-a775b.firebaseapp.com",
+          databaseURL: "https://afremote-a775b-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "afremote-a775b",
+          storageBucket: "afremote-a775b.appspot.com",
+          messagingSenderId: "261676390679",
+          appId: "1:261676390679:web:99f87beb45060370fc3f52",
+          measurementId: "G-KN81XFM62P"
+        };
+        firebase.initializeApp(config);
+        </script>
+        <script>
+            var fileButton = document.getElementById('fileButton');
+            fileButton.addEventListener('change', function(e){
+            var file = e.target.files[0];
+            var storageRef = firebase.storage().ref(file.name);
+            storageRef.put(file);
+            storage
+                .getDownloadURL()
+                .then(function(url) {
+                  document.getElementById('url').value = url;
+                  console.log(url);
+                })
+                .catch(function(error) {
+                  console.log("error encountered");
+                });
+            });
+        </script>
+    </form>
+</body>
+</html>

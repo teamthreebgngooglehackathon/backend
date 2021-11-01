@@ -153,8 +153,8 @@ def postcreateyourprofile(request):
     user_ = autho.get_account_info(idtoken)
     hello_user = user_['users'][0]['localId']
 
-    cv_data = {"cv":request.POST.get("url")}
-    db.child('Candidates').child(hello_user).child("CV").set(cv_data)
+    # cv_data = {"cv":request.POST.get("url")}
+    # db.child('Candidates').child(hello_user).child("CV").set(cv_data)
 
     education = ["Education","school", "qualification", "field", "educationstartdate","educationenddate"]
     work_experience = ["Work Experience","company_name", "details", "role", "startdateworkexperience", "enddateworkexperience"]
@@ -180,3 +180,16 @@ def postcreateyourprofile(request):
     db.child('Candidates').child(hello_user).child('Roles').set(data_roles)
 
     return render(request,"welcome.html")
+
+def firebase_upload(request):
+    return render(request,'firebase_upload.html')
+
+def postfirebase_upload(request):
+    idtoken = request.session['uid']
+    user_ = autho.get_account_info(idtoken)
+    hello_user = user_['users'][0]['localId']
+    cv_data = {"cv": request.POST.get("url")}
+    print("hello")
+    print("hello ",cv_data)
+    db.child('Candidates').child(hello_user).child("CV").set(cv_data)
+    return render(request, 'firebase_upload.html')

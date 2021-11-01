@@ -29,5 +29,7 @@ urlpatterns = [
     path('company_submit/',views.company_submit, name="company_submit"),
     path('post_company_submit/',views.post_company_submit, name="post_company_submit"),
     path('createyourprofile/', views.createyourprofile, name="createyourprofile"),
-    path('postcreateyourprofile/', views.postcreateyourprofile, name="postcreateyourprofile")
+    path('postcreateyourprofile/', views.postcreateyourprofile, name="postcreateyourprofile"),
+    path('firebase_upload/', views.firebase_upload, name="firebaseupload"),
+    path('postfirebase_upload/', views.postfirebase_upload, name="postfirebase_upload")
 ]
